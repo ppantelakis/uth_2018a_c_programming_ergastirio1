@@ -5,6 +5,7 @@ int main()
 {
     while(1)
     {
+        printf("Entering infinite loop. Please press CTRL+C to exit.\n\n");
         printf("Please, type the first number: ");
         scanf("%d", &i1);
         printf("Please, type the second number: ");
