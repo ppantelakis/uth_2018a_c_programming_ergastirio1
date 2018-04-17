@@ -11,20 +11,20 @@ int main()
     scanf("%d", &i3);
     printf("Please, type the fourth number: ");
     scanf("%d", &i4);
-    printf("You typed the numbers %d, %d, %d, %d.\n", i1, i2, i3, i4);
+    printf("You typed the numbers i1=%d, i2=%d, i3=%d, i4=%d.\n", i1, i2, i3, i4);
     if (i1 < i2)
     {
-        if (i2 < i3)
+        if (i2 < i3) // i1<i2<i3
         {
-            if (i3 < i4) //i1<i2<i3<i4
+            if (i4 > i3) //i1<i2<i3<i4
             {
                 printf("The correct order is: %d,%d,%d,%d\n",i1, i2, i3, i4);
             }
-            else if (i2 < i4) //i1<i2<i4<i3
+            else if (i4 > i2) //i1<i2<i4<i3
             {
                 printf("The correct order is: %d,%d,%d,%d\n",i1, i2, i4, i3);
             }
-            else if (i1 < i4) // i1<i4<i2<i3
+            else if (i4 > i1) // i1<i4<i2<i3
             {
                 printf("The correct order is: %d,%d,%d,%d\n",i1, i4, i2, i3);
             }
@@ -33,7 +33,44 @@ int main()
                 printf("The correct order is: %d,%d,%d,%d\n",i4, i1, i2, i3);
             }
         }
-
+        else if (i1 < i3) // i1<i3<i2
+        {
+            if (i4 > i2) // i1<i3<i2<i4
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i1, i3, i2, i4);
+            }
+            else if (i4 > i3) // i1<i3<i4<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i1, i3, i4, i2);
+            }
+            else if (i4 > i1) // i1<i4<i3<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i1, i4, i3, i2);
+            }
+            else // i4<i1<i3<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i4, i1, i3, i2);
+            }
+        }
+        else if (i3 < i1) // i3<i1<i2
+        {
+            if (i4 > i2) // i3<i1<i2<i4
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i3, i1, i2, i4);
+            }
+            else if (i4 > i1) // i3<i1<i4<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i3, i1, i4, i2);
+            }
+            else if (i4 > i3) // i3<i4<i1<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i3, i4, i1, i2);
+            }
+            else // i4<i3<i1<i2
+            {
+                printf("The correct order is: %d,%d,%d,%d\n",i4, i3, i1, i2);
+            }
+        }
     }
     return 0;
 }
