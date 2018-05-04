@@ -12,7 +12,7 @@ int main()
         printf("Give me the %d number : ",n+1);
         scanf("%d",&akeraioi[n]);
     }
-    //Copy the contents of tables akeraioi to tablea, tableb
+    //Copy the contents of the tables akeraioi to tablea, tableb
     for(n=0;n<n_max;n++)
     {
         tablea[n] = akeraioi[n];
