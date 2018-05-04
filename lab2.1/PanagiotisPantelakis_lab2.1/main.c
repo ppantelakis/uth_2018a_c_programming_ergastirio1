@@ -28,7 +28,30 @@ int main()
       y = -x*x*x-4*x*x+x+3;
       printf("y=%6.2lf",y);
     }
-    //y = (x>=10) ? (6*x*x+2*x-13) : x;
-    //printf("x=%lf, y=%lf",x,y);
+
+    x1=x+a;
+    if(x1>=10)
+    {
+      y1 = 6*x1*x1+2*x1-13;
+      printf("y1=%6.2lf\n\n",y1);
+    }
+    if(x1>=-10 && x1<=10)
+    {
+      y1 = 60*x1+7;
+      if(y1<0)
+      {
+        y1=-1*y1;
+      }
+      printf("y1=%6.2lf",y1);
+    }
+    if(x1<=-10)
+    {
+      y1 = -x1*x1*x1-4*x1*x1+x1+3;
+      printf("y1=%6.2lf",y1);
+    }
+
+    lim = (y1-y)/a;
+
+    printf("x1=%lf y1=%lf lim=%lf",x1,y1,lim);
     return 0;
 }
