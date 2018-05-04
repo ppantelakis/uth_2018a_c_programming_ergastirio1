@@ -5,7 +5,8 @@ const double a = 0.001;
 
 int main()
 {
-    double x, y, x1, y1, lim;
+    double x, y, x1, y1, lim, df;
+    int myflag = 0;// check if calculated f'
     printf("Type Value x : ");
     scanf("%lf",&x);
     printf("x=%6.2lf\n\n",x);
@@ -30,6 +31,8 @@ int main()
     }
 
     x1=x+a;
+
+    //First way to calculate f'
     if(x1>=10)
     {
       y1 = 6*x1*x1+2*x1-13;
@@ -52,6 +55,33 @@ int main()
 
     lim = (y1-y)/a;
 
-    printf("x1=%lf y1=%lf lim=%lf",x1,y1,lim);
+    printf("First way of calculation f' \n x1=%6.2lf y1=%6.2lf lim=%6.2lf\n\n",x1,y1,lim);
+
+    //Second way to calculate f'
+    if(x>10)
+    {
+      df = 12*x+2;
+    }
+    else if(x>-(7.0/60) && x<(-7.0/60))
+    {
+      df = 60;
+    }
+    else if(x<-(7.0/60) && x>(-10))
+    {
+      df = -60;
+    }
+    else if(x<(-10))
+    {
+      df = -3*x*x-8*x+1;
+    }
+    else
+    {
+        printf("Can not calculate f' because of x=%6.2lf",x);
+        myflag = 1;
+    }
+    if(myflag==0)
+    {
+        printf("Second way of calculation f' \n\n x=%6.2lf df=%6.2lf\n\n",x1,df);
+    }
     return 0;
 }
