@@ -16,6 +16,7 @@ int main()
     char c;
     int totalvalid=n_max_valid_points;//Total valid positions for success finish of game
     int feltrap=0;//Recognize if the user fell in a trap
+    int neartrap=0;//Recognize if the user is near in a trap
     int totalmoves=0;//Total moves done by player
     srand(time(NULL));//Initialize random generator
     //Initialization of table
@@ -128,15 +129,24 @@ int main()
                     feltrap = 1;
                     break;
                 }
+                else if(trap[0][i]==curx-1 || trap[0][i]==curx+1 || trap[1][i]==cury+1 || trap[1][i]==cury-1)
+                {
+                    neartrap=1;
+                }
             }
         }
         if(feltrap==1)
         {
-            printf("You have fell in a trap. Game over!!! \n\n");
+            printf("\n\nYou have fell in a trap. Game over!!! \n\n");
             break;
         }
+        else if(neartrap==1)
+        {
+            printf("\n\nYou are near in a trap. Be careffuly!!! \n\n");
+        }
+        neartrap=0;
         table[curx][cury]='o';
     }
-    printf("you have done total %d moves \n\n",totalmoves);
+    printf("\n\nYou have done total %d moves \n\n",totalmoves);
     return 0;
 }
