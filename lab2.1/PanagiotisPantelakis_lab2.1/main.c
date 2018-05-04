@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+const double a = 0.001;
+
 int main()
 {
-    double x,y;
+    double x, y, x1, y1, lim;
     printf("Type Value x : ");
     scanf("%lf",&x);
     printf("x=%6.2lf\n\n",x);
