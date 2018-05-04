@@ -33,7 +33,7 @@ int main()
         //https://stackoverflow.com/questions/822323/how-to-generate-a-random-number-in-c
         trap[0][i]=rand() % n_width;
         trap[1][i]=rand() % n_height;
-        table[trap[0][i]][trap[1][i]]='t';
+        //table[trap[0][i]][trap[1][i]]='t';
     }
     //Adding in 4 random positions in table trap
     for(i=0;i<n_max_valid_points;i++)
