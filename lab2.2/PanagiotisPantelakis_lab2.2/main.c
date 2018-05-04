@@ -6,6 +6,7 @@
 int main()
 {
     int akeraioi[n_max], tablea[n_max], tableb[n_max], n, i, j, helpvar, isswitched=1;//helpvar for switching variables, isswitched flag if switched variables
+    int totswapa=0,totswapb=0;//total swaps for tables a,b
     for(n=0;n<n_max;n++)
     {
         printf("Give me the %d number : ",n+1);
@@ -25,6 +26,7 @@ int main()
             if(tablea[i]<tablea[j])
             {
                 //switch variables
+                totswapa++;
                 helpvar = tablea[i];
                 tablea[i] = tablea[j];
                 tablea[j] = helpvar;
@@ -43,7 +45,7 @@ int main()
     {
         printf("%d ",tablea[n]);
     }
-
+    printf("\n\n Total swaps : %d \n\n",totswapa);
     //Second sorting method
     while(isswitched)
     {
@@ -53,6 +55,7 @@ int main()
             if(tableb[i]>tableb[i+1])
             {
                 //switch variables
+                totswapb++;
                 helpvar = tableb[i];
                 tableb[i] = tableb[i+1];
                 tableb[i+1] = helpvar;
@@ -75,5 +78,7 @@ int main()
     {
         printf("%d ",tableb[n]);
     }
+    printf("\n\n Total swaps : %d \n\n",totswapb);
+
     return 0;
 }
