@@ -3,9 +3,8 @@
 
 #define n_width 31
 #define n_height 41
-#define n_randtimes 4
+#define n_max_trap_points 4
 #define n_max_valid_points 4
-
 
 int main()
 {
@@ -13,9 +12,10 @@ int main()
     const c_trap = 'x';//Trap character
     int i,j;//Counters for x,y to table
     int curx=n_width/2,cury=n_height/2;//Current position of the player
-    int trap[2][n_randtimes];//Trap coordinations
+    int trap[2][n_max_trap_points];//Trap coordinations
     char c;
     int totalvalid=n_max_valid_points;//Total valid positions for success finish of game
+    int feltrap=0;//Recognize if the user fell in a trap
     srand(time(NULL));//Initialize random generator
     //Initialization of table
     for(i=0;i<n_width;i++)
@@ -28,11 +28,12 @@ int main()
     //Initialization of player coordination
     table[curx][cury]='o';
     //Adding in 4 random positions in table trap
-    for(i=0;i<n_randtimes;i++)
+    for(i=0;i<n_max_trap_points;i++)
     {
         //https://stackoverflow.com/questions/822323/how-to-generate-a-random-number-in-c
         trap[0][i]=rand() % n_width;
         trap[1][i]=rand() % n_height;
+        table[trap[0][i]][trap[1][i]]='t';
     }
     //Adding in 4 random positions in table trap
     for(i=0;i<n_max_valid_points;i++)
@@ -115,6 +116,22 @@ int main()
                 break;
             }
             printf("\n\nYou found success point. Left %d valid points to pass ",totalvalid);
+        }
+        else
+        {
+            for(i=0;i<n_max_trap_points;i++)
+            {
+                if(trap[0][i]==curx && trap[1][i]==cury)
+                {
+                    feltrap = 1;
+                    break;
+                }
+            }
+        }
+        if(feltrap==1)
+        {
+            printf("You have fell in a trap. Game over!!! \n\n");
+            break;
         }
         table[curx][cury]='o';
     }
