@@ -16,6 +16,7 @@ int main()
     char c;
     int totalvalid=n_max_valid_points;//Total valid positions for success finish of game
     int feltrap=0;//Recognize if the user fell in a trap
+    int totalmoves=0;//Total moves done by player
     srand(time(NULL));//Initialize random generator
     //Initialization of table
     for(i=0;i<n_width;i++)
@@ -65,6 +66,7 @@ int main()
         printf("\n");
         printf("Press q to quit, h to left, j to down, k to up, l right : ");
         c = getchar();
+        totalmoves++;
         getchar();
         if(c=='q')//Quit
         {
@@ -135,6 +137,6 @@ int main()
         }
         table[curx][cury]='o';
     }
-
+    printf("you have done total %d moves \n\n",totalmoves);
     return 0;
 }
