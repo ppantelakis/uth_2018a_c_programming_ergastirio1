@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define n_max 3
+#define n_max 100
 
 int main()
 {
@@ -34,18 +34,19 @@ int main()
         }
     }
     //Print the unsorted array akeraioi
-    printf("\n\n The unsorted array is\n\n");
+    printf("\n\nThe values into the unsorted array are\n\n");
     for(n=0;n<n_max;n++)
     {
         printf("%d ",akeraioi[n]);
     }
     //Print the sorted array tablea
-    printf("\n\n The sorted array table a is \n\n");
-    for(n=0;n<n_max;n++)
-    {
-        printf("%d ",tablea[n]);
-    }
-    printf("\n\n Total swaps : %d \n\n",totswapa);
+    //printf("\n\n The sorted array table a is \n\n");
+    //for(n=0;n<n_max;n++)
+    //{
+    //    printf("%d ",tablea[n]);
+    //}
+    printf("\n\nTotal swaps for first method: %d",totswapa);
+
     //Second sorting method
     while(isswitched)
     {
@@ -67,18 +68,45 @@ int main()
     }
 
     //Print the unsorted array akeraioi
-    printf("\n\n The unsorted array is\n\n");
-    for(n=0;n<n_max;n++)
-    {
-        printf("%d ",akeraioi[n]);
-    }
-    //Print the sorted array tablea
-    printf("\n\n The sorted array tableb is \n\n");
-    for(n=0;n<n_max;n++)
-    {
-        printf("%d ",tableb[n]);
-    }
-    printf("\n\n Total swaps : %d \n\n",totswapb);
+    //printf("\n\n The unsorted array is\n\n");
+    //for(n=0;n<n_max;n++)
+    //{
+    //    printf("%d ",akeraioi[n]);
+    //}
+    //Print the sorted array tableb
+    //printf("\n\n The sorted array tableb is \n\n");
+    //for(n=0;n<n_max;n++)
+    //{
+    //    printf("%d ",tableb[n]);
+    //}
+    printf("\n\nTotal swaps for second method : %d",totswapb);
 
+    //Compare tablea,tableb
+    for(n=0;n<n_max;n++)
+    {
+        if(tablea[n]!=tableb[n])
+        {
+            printf("\n\nThe tables a,b have different values. Something went wrong!!!");
+            n=n_max+1;
+            break;
+        }
+    }
+    if(n==n_max)
+    {
+        printf("\n\nThe tables a,b have same values. The two sorting methods have worked perfect!!! The values into the sorted arrays are : \n\n");
+        for(n=0;n<n_max;n++)
+        {
+            //Print the values of a table. Because they are the same there is no problem which table are we printing to user
+            printf("%d ",tableb[n]);
+        }
+    }
+    else
+    {
+        //Print both tables with each value in same position to see the difference
+        for(n=0;n<n_max;n++)
+        {
+            printf("a[%d]:%d b[%d]:%d,",tablea[n] ,tableb[n]);
+        }
+    }
     return 0;
 }
