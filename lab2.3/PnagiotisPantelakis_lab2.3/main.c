@@ -4,7 +4,7 @@
 #define n_width 31
 #define n_height 41
 #define n_max_valid_points 4
-#define n_total_boards 5
+#define n_total_boards 4
 
 int main()
 {
@@ -17,7 +17,7 @@ int main()
     int feltrap=0;//Recognize if the user fell in a trap
     int neartrap=0;//Recognize if the user is near in a trap
     int totalmoves=0;//Total moves done by player
-    int t_max_trap_points[n_total_boards] = { 4, 6, 10, 12, 14};//Trap points per board
+    int t_max_trap_points[n_total_boards] = { 4, 6, 10, 12};//Trap points per board
     int trap[2][14];//Trap coordinations
     int trap_points;//Current max traps
     int k;//counter for boards
