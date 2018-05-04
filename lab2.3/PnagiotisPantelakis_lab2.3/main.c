@@ -10,18 +10,15 @@ int main()
 {
     char table[n_width][n_height];
     int i,j;
+    int curx=n_width/2,cury=n_height/2;//Current position of the player
     for(i=0;i<n_width;i++)
     {
         for(j=0;j<n_height;j++)
         {
             table[i][j]=' ';
-            if(i==(n_width/2) && j==(n_height/2))
-            {
-                table[i][j]='o';
-                printf("%d %d",i,j);
-            }
         }
     }
+    table[curx][cury]='o';
     for(i=0;i<n_randtimes;i++)
     {
         //Adding in 4 random positions in table the char x
