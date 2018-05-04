@@ -30,15 +30,19 @@ int main()
             case 4  :
               printf("You got a 4, and you are stable to position %d...\n",board);
               break;
+
             case 5  :
               board=board-2;
               printf("You are very unlucky! You got a 5, and you are sent back -2 to position %d...\n",board);
               break;
+
             case 6  :
               board=board+10;
               printf("You are very lucky! You got a 6, and you are sent forward +10 to position %d...\n",board);
               break;
+
             default : /* Not necessary because 1<=d<=6 */
+                printf("something went wrong! You got a %d...\n",d);
                 break;
         }
 
