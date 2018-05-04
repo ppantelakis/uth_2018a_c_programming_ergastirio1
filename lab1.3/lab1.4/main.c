@@ -5,6 +5,7 @@
 int main()
 {
     int d, board=0, moves=0, repeat=0, prev; //added var prev for previus value of d
+    char c;
     srand((unsigned int) time(0));
     d = 1 + ((long long)6*rand())/(1+(long long)RAND_MAX);
     prev = d;
@@ -57,5 +58,15 @@ int main()
         prev = d;
     }
     printf("\n\nGame over!!!\n\nTotal moves done : %d\n\n\nYour score is : %d\n\n\n",moves,board);
+    while(1)
+    {
+        printf("Press q to quit: ");
+        c = getchar();
+        getchar();
+        if(c=='q')
+        {
+            break;
+        }
+    }
     return 0;
 }
