@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1525432430 source:/media/sf_vbox_share/panosp/projects/uth_2018a_c_programming_ergastirio1/lab2.3/PnagiotisPantelakis_lab2.3/main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -13,6 +13,7 @@ int main()
     int i,j;
     int curx=n_width/2,cury=n_height/2;//Current position of the player
     int trap[2][n_randtimes];//Trap coordinations
+    int valpos[2][n_randtimes];//Valid position coordinations
     //Initialization of table
     for(i=0;i<n_width;i++)
     {
@@ -29,11 +30,14 @@ int main()
         //https://stackoverflow.com/questions/822323/how-to-generate-a-random-number-in-c
         trap[0][i]=rand() % n_width;
         trap[1][i]=rand() % n_height;
+        valpos[0][i]=rand() % n_width;
+        valpos[1][i]=rand() % n_height;
+        table[valpos[0][i]][valpos[1][i]]='x';
     }
     //Printing the initialized table
     for(i=0;i<n_width+2;i++)
     {
-        printf("-");
+        printf("---");
     }
     printf("\n");
     for(i=0;i<n_width;i++)
@@ -47,7 +51,7 @@ int main()
     }
     for(i=0;i<n_width+2;i++)
     {
-        printf("-");
+        printf("---");
     }
     printf("\n");
     return 0;
