@@ -14,8 +14,12 @@ int main()
         for(j=0;j<n_height;j++)
         {
             table[i][j]=' ';
+            if(i==((n_width/2)+1) && j==((n_height/2)+1))
+            {
+                table[i][j]='O';
+                printf("%d %d",i,j);
+            }
         }
     }
-    printf("Hello world!\n");
     return 0;
 }
