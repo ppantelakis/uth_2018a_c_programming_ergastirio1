@@ -7,11 +7,16 @@ int main()
 {
     int akeraioi[n_max], tablea[n_max], tableb[n_max], n, i, j, helpvar, isswitched=1;//helpvar for switching variables, isswitched flag if switched variables
     int totswapa=0,totswapb=0;//total swaps for tables a,b
+    srand(time(NULL));
     for(n=0;n<n_max;n++)
     {
-        printf("Give me the %d number : ",n+1);
-        scanf("%d",&akeraioi[n]);
+        akeraioi[n] = rand();
     }
+    //for(n=0;n<n_max;n++)
+    //{
+    //    printf("Give me the %d number : ",n+1);
+    //    scanf("%d",&akeraioi[n]);
+    //}
     //Copy the contents of the tables akeraioi to tablea, tableb
     for(n=0;n<n_max;n++)
     {
