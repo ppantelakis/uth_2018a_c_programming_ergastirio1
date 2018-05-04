@@ -6,7 +6,7 @@ const double a = 0.001;
 int main()
 {
     double x, y, x1, y1, lim, df;
-    int myflag = 0;// check if calculated f'
+    int myflag = 0;// check if calculated f' 0 = yes 1=no
     printf("Type Value x : ");
     scanf("%lf",&x);
     printf("x=%6.2lf\n\n",x);
