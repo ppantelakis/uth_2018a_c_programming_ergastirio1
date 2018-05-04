@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1525410210 source:/media/sf_vbox_share/panosp/projects/uth_2018a_c_programming_ergastirio1/lab1.3/lab1.4/main.c
+1525411272 source:/media/sf_vbox_share/panosp/projects/uth_2018a_c_programming_ergastirio1/lab1.3/lab1.4/main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
