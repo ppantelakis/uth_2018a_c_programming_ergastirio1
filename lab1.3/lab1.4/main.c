@@ -15,25 +15,30 @@ int main()
         {
             case 1  :
               board++;
-              break; /* optional */
+              printf("You got a 1, and you are sent forward +1 to position %d...\n",board);
+              break;
 
            case 2  :
               board=board*2;
-              break; /* optional */
+              printf("You got a 2, and you are sent forward *2 position %d...\n",board);
+              break;
 
             case 3  :
               board=0;
-              break; /* optional */
+              printf("You are very unlucky! You got a 3, and you are sent back to position 0...\n");
+              break;
             case 4  :
-              break; /* optional */
+              printf("You got a 4, and you are stable to position %d...\n",board);
+              break;
             case 5  :
               board=board-2;
-              break; /* optional */
+              printf("You are very unlucky! You got a 5, and you are sent back -2 to position %d...\n",board);
+              break;
             case 6  :
               board=board+10;
-              break; /* optional */
-           /* you can have any number of case statements */
-           default : /* Not neseseray because 1<=d<=6 */
+              printf("You are very lucky! You got a 6, and you are sent forward +10 to position %d...\n",board);
+              break;
+            default : /* Not necessary because 1<=d<=6 */
                 break;
         }
 
