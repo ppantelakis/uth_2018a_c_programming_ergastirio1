@@ -22,6 +22,12 @@ FILE * file_open(char *file_mode)
     return fp;
 }
 
+//Function to get the f(x)
+double f_y(double x)
+{
+    return sqrt((x-1)*(x-1)*(x-1));
+}
+
 void file_fill()
 {
     int i;
@@ -36,7 +42,7 @@ void file_fill()
         for(i=0;i<TOTALPOINTS;i++)
         {
             x = x + POINT_STEP;
-            y = sqrt((x-1)*(x-1)*(x-1));
+            y = f_y(x);
             fprintf(fp, "%.2f\n",y);
         }
         fclose(fp);
