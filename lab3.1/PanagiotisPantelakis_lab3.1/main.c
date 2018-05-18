@@ -171,10 +171,13 @@ void file_print_contents()
 int main()
 {
     file_fill();
-    printf("File %s was filled successfully!!!\n",POINTS_FILENAME);
+    printf("\n\n\nFile %s was filled successfully!!!\n\n\n",POINTS_FILENAME);
+    printf("\n\n\nPrining file %s contents!!!\n",POINTS_FILENAME);
     file_print_contents();
+    printf("\n\n\nFilling table with differentiation!!!\n\n\n");
     fint_x();
+    printf("\n\n\nPrining table with values of x, y, y' !!!\n\n\n");
     t_print();
-    printf("The integral is : %lf\n\n", f_integral());
+    printf("\n\n\nThe integral is : %lf\n\n\n", f_integral());
     return 0;
 }
