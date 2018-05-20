@@ -12,19 +12,20 @@ char t_chars[MAX_H][MAX_W];
 //Enumerator of shapes
 enum enum_shapes{Triangle = 1, Square = 2, Parallelogram = 3, Trapeze = 4, Circle = 5};
 
-void print_shape()
+int print_shape()
 {
+    int ret = 0;
     int h, l;
     printf("\nPrinting shape\n\n");
     for(h=0;h<MAX_H;h++)
     {
         for(l=0;l<MAX_W;l++)
         {
-            printf("%c",t_chars[h][l]);
+            printf("%c%c",t_chars[h][l], t_chars[h][l]);
         }
         printf("\n");
     }
-    return;
+    return ret;
 }
 
 void init_shape()
@@ -48,8 +49,19 @@ int design_Triangle()
 }
 int design_Square()
 {
-    int ret = 1;
-    print_shape();
+    int ret = 0;
+    int side, startx, starty, i;
+    printf("Give side for the square : ");
+    scanf("%d", &side);
+    startx = starty = (MAX_W/2) - (side/2);
+    for(i=startx;i<(side+startx);i++)
+    {
+        t_chars[starty][i] = '*';
+        t_chars[starty+side][i] = '*';
+        t_chars[i][startx] = '*';
+        t_chars[i][startx+side] = '*';
+    }
+    ret = print_shape();
     return ret;
 }
 int design_Parallelogram()
@@ -70,7 +82,7 @@ int design_Circle()
     int radius;
     printf("Give radius for the circle : ");
     scanf("%d", &radius);
-    print_shape();
+    ret = print_shape();
     return ret;
 }
 
