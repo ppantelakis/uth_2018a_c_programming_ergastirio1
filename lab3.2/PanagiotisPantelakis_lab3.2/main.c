@@ -43,8 +43,50 @@ void init_shape()
 
 int design_Triangle()
 {
-    int ret = 1;
-    print_shape();
+    int ret = 0;
+    int w, h, d, startw, starth, i, upper_corner_x, tmp1, tmp2;
+    printf("Give width: ");
+    scanf("%d", &w);
+    printf("Give height: ");
+    scanf("%d", &h);
+    printf("Give distance: ");
+    scanf("%d", &d);
+
+    startw = (MAX_W/2) - (w/2);
+    starth = MAX_H-1;
+    upper_corner_x = startw- (w/2)+d;
+    if(upper_corner_x>startw+(w/2))
+    {
+        upper_corner_x=startw+(w/2)-1;
+    }
+    else if(upper_corner_x<=startw-(w/2))
+    {
+        upper_corner_x=startw-(w/2)+1;
+    }
+    for(i=startw;i<(startw+(w/2));i++)
+    {
+        t_chars[starth][i] = '*';
+        t_chars[starth][startw-i+startw] = '*';
+    }
+
+    tmp1 = tmp2 = upper_corner_x;
+    for(i=starth-h;i<starth;i++)
+    {
+        if(tmp1>=(startw+(w/2)))
+        {
+            tmp1=(startw+(w/2))-1;
+        }
+
+        if(tmp2<=(startw-(w/2)))
+        {
+            tmp2=(startw-(w/2))+1;
+        }
+        t_chars[i][tmp1] = '*';
+        tmp1++;
+        t_chars[i][tmp2] = '*';
+        tmp2--;
+    }
+    ret = print_shape();
     return ret;
 }
 int design_Square()
