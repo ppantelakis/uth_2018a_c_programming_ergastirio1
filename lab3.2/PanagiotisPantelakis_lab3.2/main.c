@@ -150,8 +150,31 @@ int design_Parallelogram()
 }
 int design_Trapeze()
 {
-    int ret = 1;
-    print_shape();
+    int ret = 0;
+    int w, h, dl, dr, startw, starth, upper_left_x, upper_right_x, i, upper_corner_x;
+    printf("Give width: ");
+    scanf("%d", &w);
+    printf("Give height: ");
+    scanf("%d", &h);
+    printf("Give upper left distance: ");
+    scanf("%d", &dl);
+    printf("Give upper right distance: ");
+    scanf("%d", &dr);
+
+    startw = (MAX_W/2) - (w/2);
+    starth = MAX_H-1;
+    upper_left_x = startw+dl;
+    upper_right_x = startw+dr;
+
+    for(i=startw;i<w;i++)
+    {
+        t_chars[starth][i] = '*';
+    }
+    for(i=upper_left_x;i<upper_right_x;i++)
+    {
+        t_chars[starth-h][i] = '*';
+    }
+    ret = print_shape();
     return ret;
 }
 int design_Circle()
