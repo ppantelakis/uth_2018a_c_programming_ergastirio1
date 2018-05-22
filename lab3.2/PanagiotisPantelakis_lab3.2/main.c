@@ -21,7 +21,7 @@ int print_shape()
     {
         for(l=0;l<MAX_W;l++)
         {
-            printf("%c%c",t_chars[h][l], t_chars[h][l]);
+            printf("%c",t_chars[h][l]);
         }
         printf("\n");
     }
@@ -35,7 +35,7 @@ void init_shape()
     {
         for(l=0;l<MAX_W;l++)
         {
-            t_chars[h][l] = '-';
+            t_chars[h][l] = ' ';
         }
     }
     return;
@@ -50,24 +50,60 @@ int design_Triangle()
 int design_Square()
 {
     int ret = 0;
-    int side, startx, starty, i;
-    printf("Give side for the square : ");
-    scanf("%d", &side);
-    startx = starty = (MAX_W/2) - (side/2);
-    for(i=startx;i<(side+startx);i++)
+    int side=MAX_W, startx, starty, i;
+    //While the user inserts side>MAX_W or side<0
+    while(side>(MAX_W-3) || side<=0)
     {
-        t_chars[starty][i] = '*';
-        t_chars[starty+side][i] = '*';
-        t_chars[i][startx] = '*';
-        t_chars[i][startx+side] = '*';
+        printf("Give side for the square 0<side<=%d: ",(MAX_W-3));
+        scanf("%d", &side);
+        if(side<=(MAX_W-3))
+        {
+            startx = starty = (MAX_W/2) - (side/2);
+            for(i=startx;i<(side+startx+1);i++)
+            {
+                t_chars[starty][i] = '*';
+                t_chars[starty+side][i] = '*';
+                t_chars[i][startx] = '*';
+                t_chars[i][startx+side] = '*';
+            }
+            ret = print_shape();
+        }
     }
-    ret = print_shape();
     return ret;
 }
 int design_Parallelogram()
 {
-    int ret = 1;
-    print_shape();
+    int ret = 0;
+    int side_w=MAX_W, side_h=MAX_H, start_h, start_w, i;
+    //While the user inserts side>MAX_W or side<0
+    while(side_w>(MAX_W-3) || side_w<=0 || side_h>(MAX_H-3) || side_h<=0)
+    {
+        printf("Give side_w(width) for the Parallelogram 0<side_w<=%d: ",(MAX_W-3));
+        scanf("%d", &side_w);
+        if(side_w<=(MAX_W-3))
+        {
+            printf("Give side_h(height) for the Parallelogram 0<side_h<=%d: ",(MAX_H-3));
+            scanf("%d", &side_h);
+            if(side_h<=(MAX_H-3))
+            {
+                start_w = (MAX_W/2) - (side_w/2);
+                start_h = (MAX_H/2) - (side_h/2);
+                for(i=start_h;i<(side_h+start_h+1);i++)
+                {
+                    t_chars[i][start_w] = '*';
+                    t_chars[i][start_w+side_w] = '*';
+                }
+                for(i=start_w;i<(side_w+start_w+1);i++)
+                {
+                    t_chars[start_h][i] = '*';
+                    t_chars[start_h+side_h][i] = '*';
+                }
+
+
+                ret = print_shape();
+            }
+        }
+    }
     return ret;
 }
 int design_Trapeze()
