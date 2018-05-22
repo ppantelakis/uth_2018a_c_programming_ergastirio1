@@ -115,10 +115,30 @@ int design_Trapeze()
 int design_Circle()
 {
     int ret = 0;
-    int radius;
-    printf("Give radius for the circle : ");
-    scanf("%d", &radius);
-    ret = print_shape();
+    int radius = MAX_W/2, start_h, start_w, i, k, j;
+    //While the user inserts radius>=MAX_W/2 or side<0
+    while(radius>=(MAX_W/2) || radius<=0)
+    {
+        printf("Give radius for the circle 0<radius<=%d: ",(MAX_W/2));
+        scanf("%d", &radius);
+        if(radius<(MAX_W/2))
+        {
+            start_h = start_w = (MAX_W/2);
+            j = radius;
+            for(k=start_h;k>=0;k--)
+            {
+                for(i=start_w;i<(start_w+j);i++)
+                {
+                    t_chars[k][i] = '*';
+                    t_chars[k][start_w-(i-start_w)] = '*';
+                    t_chars[start_h+start_h-k][i] = '*';
+                    t_chars[start_h+start_h-k][start_w-(i-start_w)] = '*';
+                }
+                j=j-2;
+            }
+            ret = print_shape();
+        }
+    }
     return ret;
 }
 
