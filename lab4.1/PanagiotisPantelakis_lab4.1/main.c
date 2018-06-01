@@ -6,22 +6,22 @@
 #define ELEMENTS_FILENAME "file_lab_41.txt"
 
 //Maximum no zero elements
-#define M_max 10
+#define M_max 500
 
 //N width,height of table
 #define N_SIZE 60
 
 typedef struct {
-    int x;
-    int y;
+    int col;
+    int line;
     double val;
 }SparseElement;
 
 //Table with nozero elements of type sparseElement
 SparseElement SparseMatrix[M_max];
 
-//table1,table2 sparse tables
-double table1[N_SIZE][N_SIZE], table2[N_SIZE][N_SIZE];
+//table1,table_sort_col_line sparse tables
+double table1[N_SIZE][N_SIZE], table_sort_line_col[N_SIZE][N_SIZE], table_sort_col_line[N_SIZE][N_SIZE];
 
 FILE * file_open(char *file_mode)
 {
@@ -71,10 +71,10 @@ void file_print_contents()
     SparseElement tmp_element;
     if(fp)
     {
-        while(fscanf(fp, "%d %d %lf", &tmp_element.x, &tmp_element.y, &tmp_element.val)>0)
+        while(fscanf(fp, "%d %d %lf", &tmp_element.col, &tmp_element.line, &tmp_element.val)>0)
         {
             SparseMatrix[i++] = tmp_element;
-            printf("%d %d %.0lf\n",tmp_element.x, tmp_element.y, tmp_element.val);
+            printf("%d %d %.0lf\n",tmp_element.col, tmp_element.line, tmp_element.val);
         }
         if (ferror(fp)) {
             printf("Error while reading  file %s for read!!!\n", ELEMENTS_FILENAME);
@@ -93,20 +93,69 @@ void file_print_contents()
 //Fill table1 from SparseMatrix
 void fill_table1()
 {
-    int i,k;
+    int col, line;
     SparseElement tmp_element;
-    for(i=0;i<N_SIZE;i++)
+    for(col=0;col<N_SIZE;col++)
     {
-        for(k=0;k<N_SIZE;k++)
+        for(line=0;line<N_SIZE;line++)
         {
-            table1[i][k] = 0;
+            table1[col][line] = 0;
         }
     }
-    for(i=0;i<M_max;i++)
+    for(col=0;col<M_max;col++)
     {
-        tmp_element = SparseMatrix[i];
-        table1[tmp_element.x][tmp_element.y] = tmp_element.val;
+        tmp_element = SparseMatrix[col];
+        table1[tmp_element.col][tmp_element.line] = tmp_element.val;
     }
+}
+
+void copy_table1_to_others()
+{
+    int col,line;
+    for(col=0;col<N_SIZE;col++)
+    {
+        for(line=0;line<N_SIZE;line++)
+        {
+            table_sort_line_col[col][line] = table_sort_col_line[col][line] = table1[col][line];
+
+        }
+    }
+}
+
+void print_table(double * table_for_print)
+{
+    int col,line;
+    for(line=0;line<N_SIZE;line++)
+    {
+        for(col=0;col<N_SIZE;col++)
+        {
+            printf("%.0lf ",table_for_print[col][line]);
+        }
+        printf("\n");
+
+    }
+}
+
+void sort_line_col()
+{
+    int col,line;
+    double tmp;
+    for(col=0;col<N_SIZE;col++)
+    {
+        for(line=0;line<N_SIZE;line++)
+        {
+            if(line>0 && table_sort_line_col[col][line]<table_sort_line_col[col][line-1])
+            {
+                tmp = table_sort_line_col[col][line-1];
+                table_sort_line_col[col][line-1] = table_sort_line_col[col][line];
+                table_sort_line_col[col][line] = tmp;
+                line = -1;
+            }
+        }
+
+    }
+    print_table(&table_sort_line_col);
+
 }
 
 int main()
@@ -114,5 +163,7 @@ int main()
     file_fill();
     file_print_contents();
     fill_table1();
+    copy_table1_to_others();
+    sort_line_col();
     return 0;
 }
