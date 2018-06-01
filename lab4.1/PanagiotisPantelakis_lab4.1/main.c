@@ -17,7 +17,11 @@ typedef struct {
     double val;
 }SparseElement;
 
+//Table with nozero elements of type sparseElement
 SparseElement SparseMatrix[M_max];
+
+//table1,table2 sparse tables
+double table1[N_SIZE][N_SIZE], table2[N_SIZE][N_SIZE];
 
 FILE * file_open(char *file_mode)
 {
@@ -86,9 +90,29 @@ void file_print_contents()
     return;
 }
 
+//Fill table1 from SparseMatrix
+void fill_table1()
+{
+    int i,k;
+    SparseElement tmp_element;
+    for(i=0;i<N_SIZE;i++)
+    {
+        for(k=0;k<N_SIZE;k++)
+        {
+            table1[i][k] = 0;
+        }
+    }
+    for(i=0;i<M_max;i++)
+    {
+        tmp_element = SparseMatrix[i];
+        table1[tmp_element.x][tmp_element.y] = tmp_element.val;
+    }
+}
+
 int main()
 {
     file_fill();
     file_print_contents();
+    fill_table1();
     return 0;
 }
