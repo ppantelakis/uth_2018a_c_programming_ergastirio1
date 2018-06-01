@@ -61,6 +61,7 @@ void file_fill()
 
 void file_print_contents()
 {
+    int i = 0;
     FILE *fp = file_open("r");
     size_t nread;
     SparseElement tmp_element;
@@ -68,6 +69,7 @@ void file_print_contents()
     {
         while(fscanf(fp, "%d %d %lf", &tmp_element.x, &tmp_element.y, &tmp_element.val)>0)
         {
+            SparseMatrix[i++] = tmp_element;
             printf("%d %d %.0lf\n",tmp_element.x, tmp_element.y, tmp_element.val);
         }
         if (ferror(fp)) {
