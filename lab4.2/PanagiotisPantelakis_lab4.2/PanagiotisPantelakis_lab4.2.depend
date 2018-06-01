@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1527890273 source:/media/sf_vbox_share/panosp/projects/uth_2018a_c_programming_ergastirio1/lab4.2/PanagiotisPantelakis_lab4.2/main.c
+1527892576 source:/media/sf_vbox_share/panosp/projects/uth_2018a_c_programming_ergastirio1/lab4.2/PanagiotisPantelakis_lab4.2/main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
